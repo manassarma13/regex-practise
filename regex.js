@@ -78,3 +78,43 @@ console.log(cleaned); // 'Hello world with extra spaces.'
 // Check if a string is a valid hexadecimal color (#RRGGBB or #RGB)
 const hexColor = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
 console.log(hexColor.test('#FFA07A')); // true
+
+const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,4}(\/[\w-]*)*\/?$/;
+console.log(urlRegex.test('https://www.example.com')); // true
+console.log(urlRegex.test('http://example.com/test')); // true
+
+
+const dateRegex = /^(0[1-9]|1[0-2])([\/-])(0[1-9]|[12]\d|3[01])\2(\d{4})$/;
+console.log(dateRegex.test('10/22/2024')); // true
+console.log(dateRegex.test('12-31-1999')); // true
+
+
+const lettersOnly = /^[A-Za-z]+$/;
+console.log(lettersOnly.test('HelloWorld')); // true
+console.log(lettersOnly.test('Hello123')); // false
+
+
+const repeatedWord = /\b(\w+)\s+\1\b/;
+console.log(repeatedWord.test('This is is a test.')); // true
+console.log(repeatedWord.test('No repetition here.')); // false
+
+
+const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
+console.log(timeRegex.test('23:45')); // true
+console.log(timeRegex.test('12:00')); // true
+console.log(timeRegex.test('25:00')); // false
+
+
+const email = 'user@example.com';
+const domain = email.match(/@([\w-]+\.[\w-]+)/);
+console.log(domain[1]); // 'example.com'
+
+
+const ipv4Regex = /^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}$/;
+console.log(ipv4Regex.test('192.168.1.1')); // true
+console.log(ipv4Regex.test('999.999.999.999')); // false
+
+
+const ingWords = /\b\w+ing\b/g;
+const sentence = 'I am reading, running, and swimming.';
+console.log(sentence.match(ingWords)); // ['reading', 'running', 'swimming']
